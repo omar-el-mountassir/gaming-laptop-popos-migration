@@ -1,40 +1,54 @@
 # Display Configuration Scripts
 
-These scripts help manage complex multi-monitor setups, especially for mixed resolution and refresh rate configurations.
+Scripts for managing multi-monitor setups with mixed resolutions and refresh rates.
 
-## Scripts Included
+## Available Scripts
 
-- `setup-displays.sh` - Main display configuration
-- `gaming-mode.sh` - Single display for maximum performance
-- `presentation-mode.sh` - Mirror displays for presentations
-- `reset-displays.sh` - Reset to default configuration
+### display-setup.sh
+Main configuration script that sets up dual monitors:
+- Laptop: 2560x1600 @ 250Hz
+- External: 1920x1080 @ 144Hz
+
+### laptop-only.sh
+Switches to laptop display only (2560x1600 @ 250Hz)
+
+### external-only.sh
+Switches to external display only (1920x1080 @ 144Hz)
+
+### gaming-mode.sh
+Optimizes display configuration for gaming:
+- Disables laptop screen
+- Sets external to primary
+- Reduces GPU overhead
 
 ## Usage
 
-All scripts are installed to `~/Scripts/` by the main installation script.
+All scripts are automatically copied to `~/Scripts/` during post-installation.
 
-### Quick Commands
-
+Command line:
 ```bash
 # Configure dual displays
 displays
 
-# Laptop only
+# Switch to single display
 laptop-only
-
-# External only
 external-only
 
-# Gaming mode (external only, max performance)
+# Gaming optimization
 gaming-mode
 ```
 
 ## Customization
 
-Edit the scripts to match your specific display configuration. Use `xrandr` to identify your display names:
+Edit the scripts to match your specific display configuration:
+1. Run `xrandr` to identify your display names
+2. Update the output names in the scripts
+3. Adjust resolutions and refresh rates as needed
 
-```bash
-xrandr | grep " connected"
-```
+## Troubleshooting
 
-Then update the display names in the scripts accordingly.
+If displays aren't detected:
+1. Check cable connections
+2. Verify NVIDIA drivers are loaded
+3. Try `xrandr --auto`
+4. Check system logs: `journalctl -xe`

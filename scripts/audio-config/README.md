@@ -2,12 +2,14 @@
 
 Scripts for managing complex audio setups with multiple devices.
 
-## Features
+## Available Scripts
 
-- Quick switching between audio devices
-- Bluetooth audio optimization
-- Gaming audio profiles
-- Microphone management
+### audio-switch.sh
+Quick audio device switcher supporting:
+- `laptop` - Internal speakers/headphone jack
+- `hdmi` - HDMI/DisplayPort audio
+- `usb` - USB headsets/DACs
+- `bluetooth` - Bluetooth audio devices
 
 ## Usage
 
@@ -15,31 +17,48 @@ Scripts for managing complex audio setups with multiple devices.
 # Switch to laptop speakers
 audio laptop
 
-# Switch to HDMI/DisplayPort audio
+# Switch to HDMI audio
 audio hdmi
 
 # Switch to USB headset
 audio usb
 
-# Switch to Bluetooth device
-audio bluetooth
-
-# List all audio devices
+# List available devices
 audio list
 ```
 
-## Audio Profiles
+## PulseAudio Configuration
 
-The scripts automatically configure:
-- Sample rates
-- Latency settings
-- Volume levels
-- Default devices
+The setup script configures PulseAudio for low-latency gaming:
+- Sample rate: 48000 Hz
+- Fragment size: 5ms
+- Optimized for real-time audio
+
+## GUI Alternative
+
+For more control, use `pavucontrol`:
+```bash
+pavucontrol
+```
+
+This provides:
+- Per-application volume control
+- Input/output device selection
+- Advanced routing options
 
 ## Troubleshooting
 
-If audio device not found:
-1. Run `audio list` to see available devices
-2. Check device is connected and powered
-3. Run `pavucontrol` for GUI control
-4. Restart PulseAudio: `pulseaudio -k`
+### No Sound
+1. Check mute status: `amixer sset Master unmute`
+2. Restart PulseAudio: `pulseaudio -k`
+3. Check active sink: `pactl info | grep "Default Sink"`
+
+### Audio Lag
+1. Verify low-latency settings in `~/.config/pulse/daemon.conf`
+2. Disable audio effects
+3. Use wired connection for gaming
+
+### Device Not Found
+1. List all sinks: `pactl list sinks short`
+2. Update device names in script
+3. Check device connection

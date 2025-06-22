@@ -94,7 +94,6 @@ Cloning large repository:
 | Steam | 8.3s | 5.1s | Pop!_OS |
 | GIMP | 5.7s | 3.2s | Pop!_OS |
 | LibreOffice | 4.1s | 2.3s | Pop!_OS |
-| Claude Desktop | 6.4s | 2.7s | Pop!_OS |
 
 ## Battery Life
 
@@ -128,16 +127,6 @@ Cloning large repository:
 | GPU | 78°C | 77°C |
 | NVMe | 52°C | 51°C |
 
-## Display Performance
-
-### 250Hz Display Testing
-| Test | Windows 11 | Pop!_OS |
-|------|------------|------|
-| Actual refresh rate | 250Hz | 250Hz (kernel 6.8+) |
-| Frame delivery | Consistent | Consistent |
-| Input lag | 3.2ms | 3.1ms |
-| **Result** | **Tied** | **Both excellent** |
-
 ## Overall Verdict
 
 ### Pop!_OS Wins
@@ -147,7 +136,6 @@ Cloning large repository:
 - ✅ Application launches (40-80% faster)
 - ✅ System responsiveness
 - ✅ Temperature management
-- ✅ Docker/Container performance
 
 ### Windows 11 Wins
 - ✅ Gaming performance (3-10% better)
@@ -158,42 +146,45 @@ Cloning large repository:
 - Storage performance
 - Native gaming performance
 - Heavy workload thermals
-- Display performance
 
 ## Recommendations
 
-**Choose Pop!_OS if**:
+### Choose Pop!_OS If:
 - Development is your primary use
 - You value system responsiveness
 - You want more RAM for applications
 - You prefer open-source software
-- You're okay with minor gaming performance loss
+- Boot time matters to you
 
-**Keep Windows if**:
-- Maximum gaming performance is critical
+### Keep Windows If:
+- Gaming is your primary use
 - You need specific Windows software
-- Battery life is top priority
+- Battery life is critical
 - You rely on proprietary hardware features
 
-**Dual Boot is ideal for**:
-- Getting benefits of both systems
-- Gradual transition to Linux
-- Maintaining Windows for specific needs
-- Testing Linux with safety net
+### Dual Boot For:
+- Best of both worlds
+- Gaming on Windows, work on Linux
+- Gradual transition
+- Hardware feature access when needed
 
 ## Testing Methodology
 
-All tests performed:
-- Fresh installations of both OS
-- Same hardware configuration
-- Latest drivers and updates
-- Ambient temperature: 22°C
-- Multiple runs averaged
-- Background apps minimized
-
-Benchmark tools used:
+### Tools Used
 - **Storage**: CrystalDiskMark (Windows), fio (Linux)
-- **Gaming**: Built-in benchmarks, MangoHud
-- **Temperature**: HWiNFO64 (Windows), sensors (Linux)
-- **Development**: Real-world project compilation
-- **Battery**: Standardized workload scripts
+- **Gaming**: MSI Afterburner (Windows), MangoHUD (Linux)
+- **Temperature**: HWiNFO64 (Windows), lm-sensors (Linux)
+- **Power**: BatteryInfoView (Windows), powertop (Linux)
+
+### Test Conditions
+- Clean installations
+- Same hardware configuration
+- Latest drivers/updates
+- Identical test scenarios
+- Multiple runs averaged
+
+### Notes
+- Results may vary by hardware
+- Driver updates can change performance
+- Your usage patterns matter most
+- Both OSes continue improving

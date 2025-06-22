@@ -1,46 +1,82 @@
 # System Maintenance Scripts
 
-Automated maintenance scripts to keep your Pop!_OS system running smoothly.
+Automated maintenance scripts for keeping your Pop!_OS system optimized.
 
-## Scripts Included
+## Available Scripts
 
-- `weekly-maintenance.sh` - Comprehensive weekly maintenance
-- `update-system.sh` - Safe system updates
-- `clean-system.sh` - Disk space cleanup
-- `check-health.sh` - System health monitoring
+### system-maintenance.sh
+Weekly maintenance script that:
+- Updates package database
+- Cleans package cache
+- Runs TRIM on SSDs
+- Checks NVMe health
+- Rotates logs
+- Updates locate database
 
-## Automatic Scheduling
+### backup-system.sh
+Creates system backups using Timeshift:
+- Automated weekly snapshots
+- Keeps 3 weekly backups
+- Excludes unnecessary files
+- Verifies backup integrity
 
-The main installation script sets up weekly maintenance via cron:
+### update-all.sh
+Comprehensive update script:
+- System packages (apt)
+- Snap packages
+- Flatpak applications
+- Firmware updates
+- NVIDIA drivers
+
+## Automation
+
+The maintenance script is automatically scheduled via cron:
+```bash
+# View scheduled tasks
+crontab -l
+
+# Edit schedule
+crontab -e
 ```
-0 2 * * 0 ~/Scripts/maintenance/weekly-maintenance.sh
-```
 
-Runs every Sunday at 2 AM.
+Default schedule: Sunday 2 AM
 
-## Manual Usage
+## Manual Execution
 
 ```bash
-# Run weekly maintenance
-sudo ~/Scripts/maintenance/weekly-maintenance.sh
+# Run maintenance now
+~/Scripts/system-maintenance.sh
 
-# Update system safely
-~/Scripts/maintenance/update-system.sh
+# Create backup
+~/Scripts/backup-system.sh
 
-# Clean disk space
-~/Scripts/maintenance/clean-system.sh
-
-# Check system health
-~/Scripts/maintenance/check-health.sh
+# Update everything
+~/Scripts/update-all.sh
 ```
 
-## What Gets Maintained
+## Customization
 
-- Package updates
-- Kernel cleanup
-- Log rotation
-- Cache cleanup
-- TRIM for SSDs
-- NVMe health monitoring
-- Temperature checks
-- Disk space analysis
+### Adding Tasks
+1. Edit the script
+2. Add your commands
+3. Test manually first
+4. Update cron if needed
+
+### Changing Schedule
+```bash
+crontab -e
+# Format: minute hour day month dayofweek command
+# Example: Daily at 3 AM
+0 3 * * * /home/user/Scripts/system-maintenance.sh
+```
+
+## Monitoring
+
+Check maintenance logs:
+```bash
+# View last run
+tail -100 ~/maintenance.log
+
+# Check for errors
+grep ERROR ~/maintenance.log
+```
