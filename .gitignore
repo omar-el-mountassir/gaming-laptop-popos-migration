@@ -1,0 +1,59 @@
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Test files
+test/
+*.test
+
+# Personal configuration
+config.local
+.env
+
+# Generated files
+*.generated
+build/
+dist/
+
+# Archives
+*.zip
+*.tar.gz
+*.tar.bz2
+*.7z
+
+# OS generated files
+Thumbs.db
+.directory
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+ENV/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Documentation build
+docs/_build/
+*.pdf
